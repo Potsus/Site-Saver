@@ -29,6 +29,8 @@ if [[ $1 == "install" ]] ; then
         sudo apt-get install unzip
         sudo apt-get install redis-server
 
+        sudo apt-get install nginx
+
     elif [[ $OSTYPE == "darwin"* ]] ; then # Probably on osx, do the osx specific stuff here
         brew update
         brew upgrade
@@ -93,6 +95,9 @@ elif [[ $1 == "run" ]] ; then
 
     echo "Starting Worker..."
     nohup rq worker &> logs/worker.log &
+
+    echo "Starting Nginx..."
+    nohup /usr/bin/nginx -c nginx.conf &> logs/nginx.log &
 
 
 else

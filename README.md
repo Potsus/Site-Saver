@@ -7,3 +7,7 @@ http://s3.amazonaws.com/alexa-static/top-1m.csv.zip
 
 credentials should be stored in the `aws` folder
 python requirements are in the `requirements.txt` file
+
+install everything you need with `./install.sh install`
+set up a blacklist with `./install.sh data`
+run everything with `./install.sh run`

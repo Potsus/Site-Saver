@@ -102,6 +102,7 @@ ENV/
 
 #mystuff
 aws/
+keys/
 downloads/
 top-1m.csv
 top-1m.csv.zip

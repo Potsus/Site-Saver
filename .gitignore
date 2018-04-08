@@ -100,6 +100,8 @@ ENV/
 # mypy
 .mypy_cache/
 
-
+#mystuff
 aws/
 downloads/
+top-1m.csv
+top-1m.csv.zip

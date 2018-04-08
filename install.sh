@@ -64,4 +64,15 @@ elif [[ $1 == "data" ]] ; then
     python3 blacklist.py
 
 elif [[ $1 == "run" ]] ; then
-    echo "running project"
+    echo "Starting Mongo..."
+    mongod --fork --logfile logs/mongo.log
+
+    echo "Starting Flask..."
+    export FLASK_APP=server.py  export FLASK_DEBUG=1
+    nohup flask run --host=0.0.0.0 &> logs/flask.log &
+
+
+else
+    echo "Invalid Argument"
+
+fi

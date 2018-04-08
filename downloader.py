@@ -1,5 +1,6 @@
 from subprocess import call
 from s3 import s3Connect
+from db import hashUrl
 
 def downloadSite(url):
     s3 = s3Connect()
@@ -7,8 +8,9 @@ def downloadSite(url):
     # I should add some stuff to parse robots.txt 
     # and also find a user agent that will let me do this safely
     call(['wget', '-mkEpnp', url])
-    call(['zip', '-r', url, url])
-    zipfile = '%s.zip' % url
+    zipfile = hashUrl(url)
+    call(['zip', '-r', zipfile, url])
+    zipfile = '%s.zip' % zipfile
     return zipfile
 
 
@@ -25,6 +27,6 @@ def processSiteRequest(url):
     s3.uploadFile(zipfile, zipfile)
 
     dlUrl = s3.getDownloadUrl(zipfile)
-    call(['rm', '-f', url])
+    call(['rm', '-rf', url])
     call(['rm', '-f', zipfile])
     return dlUrl

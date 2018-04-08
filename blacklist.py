@@ -1,9 +1,8 @@
-from pandas import read_csv
+from pandas import read_csv, DataFrame
 from subprocess import call
-from db import db
+from db import blacklist, hashUrl
 from config import BLACKLIST_URL
 
-col = db.blacklist
 
 print('saving blacklist')
 call(['wget', BLACKLIST_URL])
@@ -13,12 +12,31 @@ print('unzipping blacklist')
 call(['unzip', file])
 
 csv = file.replace('.zip', '')
+print('loading sites from alexa top 1m csv')
+topAlexa  = read_csv(csv, header=None, usecols=[0,1], names=['rank', 'url'])
 print('loading sites from blacklist csv')
-df = read_csv(csv)
+custom = read_csv('blacklist.csv', header=None, usecols=[0,1], names=['rank', 'url'])
+
+# check and make sure I can do lookups
+# df[df['url'].str.contains('youtube.com')==True]
+
+
+print('hashing each url')
+hashFrame = DataFrame()
+blackFrame = DataFrame()
+hashFrame['site'] = topAlexa['url'].apply(hashUrl)
+blackFrame['site'] = custom['url'].apply(hashUrl)
+print(hashFrame)
+print(blackFrame)
+hashFrame = hashFrame.append(blackFrame, ignore_index=True)
+print(hashFrame)
+
+print('dropping old blacklist')
+blacklist.drop()
 
 print('adding sites to blacklist')
-col.insert_many(df.to_dict('records'))
+blacklist.insert_many(hashFrame.to_dict('records'))
 
 print('cleaning up downloads')
-call(['rm -f', csv])
-call(['rm -f', file])
+call(['rm', '-f', csv])
+call(['rm', '-f', file])

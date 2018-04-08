@@ -5,7 +5,7 @@ client = MongoClient(MONGO_HOST, MONGO_PORT)
 db = client[MONGO_DB]
 
 blacklist = db.blacklist
-q = db.queue
+queue = db.queue
 sites = db.sites
 
 from time import time as now
@@ -40,7 +40,7 @@ def findOrAddSite(url):
         pass
     else:
         addSite(url)
-    return findSite(url)
+    return getSite(url)
 
 def addSite(url):
     site = {
@@ -48,10 +48,25 @@ def addSite(url):
         'hash': hashUrl(url),
         'firstAdded': now(),
         'copied': False,
-        'lastCopied': None,
+        'start': None,
+        'end': None,
+        'time': None,
         's3url': None,
+        'error': False,
+        'message': ''
     }
     return sites.insert_one(site).inserted_id
+
+def updateSite(site):
+    oid = site.get('_id')
+    if oid != None:
+        return sites.update_one({'_id':oid}, {'$set': site}, upsert=False).raw_result
+
+def findSite(url):
+    if siteExists(url):
+        return getSite(url)
+    else:
+        return None
 
 def getSite(url):
     return sites.find_one({'hash': hashUrl(url)})

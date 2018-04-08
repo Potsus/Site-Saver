@@ -27,6 +27,7 @@ if [[ $1 == "install" ]] ; then
         # make sure we can unzip the models
         sudo apt-get install zip
         sudo apt-get install unzip
+        sudo apt-get install redis-server
 
     elif [[ $OSTYPE == "darwin"* ]] ; then # Probably on osx, do the osx specific stuff here
         brew update
@@ -35,7 +36,23 @@ if [[ $1 == "install" ]] ; then
         brew install mongodb 
         brew install python3 #also installs pip3
 
+        # install redis
+        wget http://download.redis.io/redis-stable.tar.gz
+        tar xvzf redis-stable.tar.gz
+        cd redis-stable
+        make
+        #  and copy it to the right place
+        sudo cp src/redis-server /usr/local/bin/
+        sudo cp src/redis-cli /usr/local/bin/
+        # clean up
+        cd ..
+        rm -rf redis-stable/
+        rm -f dump.rdb
+        rm -f redis-stable.tar.gz
+
     fi
+
+    
 
 
     # ensure the mongo data directory exists and we have permissions
@@ -67,9 +84,15 @@ elif [[ $1 == "run" ]] ; then
     echo "Starting Mongo..."
     mongod --fork --logfile logs/mongo.log
 
+    echo "Starting Redis..."
+    redis-server --daemonize yes
+
     echo "Starting Flask..."
     export FLASK_APP=server.py  export FLASK_DEBUG=1
     nohup flask run --host=0.0.0.0 &> logs/flask.log &
+
+    echo "Starting Worker..."
+    nohup rq worker &> logs/worker.log &
 
 
 else

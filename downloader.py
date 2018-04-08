@@ -1,6 +1,7 @@
 from subprocess import call
 from s3 import s3Connect
-from db import hashUrl
+from db import hashUrl, isBlacklisted, findOrAddSite, updateSite
+from time import time as now
 
 def downloadSite(url):
     s3 = s3Connect()
@@ -30,3 +31,29 @@ def processSiteRequest(url):
     call(['rm', '-rf', url])
     call(['rm', '-f', zipfile])
     return dlUrl
+
+def runJob(url):
+    if isBlacklisted(url):
+        return False
+    site = findOrAddSite(url)
+    site['start'] = now()
+    updateSite(site)
+
+    try: 
+        dl = processSiteRequest(url)
+        site['copied'] = True
+        site['s3url'] = dl
+        site['error'] = False
+        site['end'] = now()
+        site['time'] = site['start'] - site['end']
+        updateSite(site)
+    except Exception as e:
+        site['copied'] = False
+        site['s3url'] = None
+        site['error'] = True
+        site['message'] = '%s: %s' % (e, e.__doc__)
+        site['end'] = now()
+        site['time'] = site['end'] - site['start']
+        updateSite(site)
+    
+    return site

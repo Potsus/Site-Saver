@@ -13,7 +13,7 @@ call(['unzip', file])
 
 csv = file.replace('.zip', '')
 print('loading sites from alexa top 1m csv')
-topAlexa  = read_csv(csv, header=None, usecols=[0,1], names=['rank', 'url'])
+topAlexa  = read_csv(csv, header=None, usecols=[0,1], names=['rank', 'url'], nrows=100000)
 print('loading sites from blacklist csv')
 custom = read_csv('blacklist.csv', header=None, usecols=[0,1], names=['rank', 'url'])
 

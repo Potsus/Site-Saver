@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Creative - Start Bootstrap Theme</title>
+    <title>Fuck SESTA - A one page site to save a copy of your personal website.</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -31,7 +31,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">Start Bootstrap</a>
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Fuck SESTA</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -59,13 +59,18 @@
         <div class="row">
           <div class="col-lg-10 mx-auto">
             <h1 class="text-uppercase">
-              <strong>Your Favorite Source of Free Bootstrap Themes</strong>
+              <strong>Fuck SESTA/FOSTA</strong>
             </h1>
             <hr>
           </div>
           <div class="col-lg-8 mx-auto">
-            <p class="text-faded mb-5">Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!</p>
-            <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
+            <p class="text-faded mb-5">
+              Since its passage in both the House and the Senate, the SESTA-FOSTA bill has endangered the lives of U.S.-based sex workers, resulting in seizures and shutdowns of the sites we rely on for advertising, safety, and community.  While the consequences of this bill are still somewhat unknown, many of us are concerned that our work websites may be deleted or otherwise impacted.
+            </p>
+            <p class="text-faded mb-5">
+              This site was designed to allow U.S.-based sex workers to easily download and save their work websites as a precautionary measure during this time of uncertainty.
+            </p>
+            <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">How It works</a>
           </div>
         </div>
       </div>
@@ -75,169 +80,60 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto text-center">
-            <h2 class="section-heading text-white">We've got what you need!</h2>
+            <h2 class="section-heading text-white">Download My Site</h2>
             <hr class="light my-4">
-            <p class="text-faded mb-4">Start Bootstrap has everything you need to get your new website up and running in no time! All of the templates and themes on Start Bootstrap are open source, free to download, and easy to use. No strings attached!</p>
-            <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">Get Started!</a>
+            <p class="text-faded mb-4">
+              Simply copy and paste your website URL into the field below and click "Go."  Your website (including pages, pictures, copy, and formatting) will be made into a ZIP file that you can then download and use to easily re-host your site.  Keep in mind, this tool may only be used while your site is still publicly available, so act today.
+            </p>
+            <a class="btn btn-light btn-xl js-scroll-trigger" href="#download">Request a Download</a>
+            <input type="text" name="website" id='website'>
+            <span id='error'>Nothing wrong yet</span>
+            <a id='s3url'>some url</a>
+            <span id='time'>it took this long</span>
+            <div id='queuepos'>your queue position</div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="services">
+    <section id="download">
       <div class="container">
         <div class="row">
           <div class="col-lg-12 text-center">
-            <h2 class="section-heading">At Your Service</h2>
+            <h2 class="section-heading">How to Unzip and Use Your Files</h2>
             <hr class="my-4">
-          </div>
-        </div>
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-3 col-md-6 text-center">
-            <div class="service-box mt-5 mx-auto">
-              <i class="fa fa-4x fa-diamond text-primary mb-3 sr-icons"></i>
-              <h3 class="mb-3">Sturdy Templates</h3>
-              <p class="text-muted mb-0">Our templates are updated regularly so they don't break.</p>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 text-center">
-            <div class="service-box mt-5 mx-auto">
-              <i class="fa fa-4x fa-paper-plane text-primary mb-3 sr-icons"></i>
-              <h3 class="mb-3">Ready to Ship</h3>
-              <p class="text-muted mb-0">You can use this theme as is, or you can make changes!</p>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 text-center">
-            <div class="service-box mt-5 mx-auto">
-              <i class="fa fa-4x fa-newspaper-o text-primary mb-3 sr-icons"></i>
-              <h3 class="mb-3">Up to Date</h3>
-              <p class="text-muted mb-0">We update dependencies to keep things fresh.</p>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 text-center">
-            <div class="service-box mt-5 mx-auto">
-              <i class="fa fa-4x fa-heart text-primary mb-3 sr-icons"></i>
-              <h3 class="mb-3">Made with Love</h3>
-              <p class="text-muted mb-0">You have to make your websites with love these days!</p>
-            </div>
+            <p>
+              Once your ZIP file is ready for download, click the link provided to download it to your device.  This link will only work for the next 24 hours.  
+            </p>
+            <p>
+              Once you have downloaded your ZIP file, simply double click on it to unzip your files.  Your device will create a new folder with all of your website documents inside.  These files and their names will vary depending on which platform you used to create your site, so take a moment to open each file and to familiarize yourself with the folder structure.  This will also give you the opportunity to ensure that all of your files downloaded properly.  
+            </p>
+            <p>
+              Now that you have a copy of your site saved, you have two options.  If you're not super tech-savvy, you can share these files with a Web Developer to upload them for you.  Or, if you'd like to upload the site yourself, you can upload the entire folder to a static hosting service. This website, for instance, is hosted on Amazon S3; however, you could also use another free hosting provider such as Github Pages, Google Firebase, or Ovobox.  For a more comprehensive list of simple static hosting providers, click the following link: https://www.slant.co/topics/2256/~static-website-hosting-provider
+            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="p-0" id="portfolio">
-      <div class="container-fluid p-0">
-        <div class="row no-gutters popup-gallery">
-          <div class="col-lg-4 col-sm-6">
-            <a class="portfolio-box" href="img/portfolio/fullsize/1.jpg">
-              <img class="img-fluid" src="img/portfolio/thumbnails/1.jpg" alt="">
-              <div class="portfolio-box-caption">
-                <div class="portfolio-box-caption-content">
-                  <div class="project-category text-faded">
-                    Category
-                  </div>
-                  <div class="project-name">
-                    Project Name
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div class="col-lg-4 col-sm-6">
-            <a class="portfolio-box" href="img/portfolio/fullsize/2.jpg">
-              <img class="img-fluid" src="img/portfolio/thumbnails/2.jpg" alt="">
-              <div class="portfolio-box-caption">
-                <div class="portfolio-box-caption-content">
-                  <div class="project-category text-faded">
-                    Category
-                  </div>
-                  <div class="project-name">
-                    Project Name
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div class="col-lg-4 col-sm-6">
-            <a class="portfolio-box" href="img/portfolio/fullsize/3.jpg">
-              <img class="img-fluid" src="img/portfolio/thumbnails/3.jpg" alt="">
-              <div class="portfolio-box-caption">
-                <div class="portfolio-box-caption-content">
-                  <div class="project-category text-faded">
-                    Category
-                  </div>
-                  <div class="project-name">
-                    Project Name
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div class="col-lg-4 col-sm-6">
-            <a class="portfolio-box" href="img/portfolio/fullsize/4.jpg">
-              <img class="img-fluid" src="img/portfolio/thumbnails/4.jpg" alt="">
-              <div class="portfolio-box-caption">
-                <div class="portfolio-box-caption-content">
-                  <div class="project-category text-faded">
-                    Category
-                  </div>
-                  <div class="project-name">
-                    Project Name
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div class="col-lg-4 col-sm-6">
-            <a class="portfolio-box" href="img/portfolio/fullsize/5.jpg">
-              <img class="img-fluid" src="img/portfolio/thumbnails/5.jpg" alt="">
-              <div class="portfolio-box-caption">
-                <div class="portfolio-box-caption-content">
-                  <div class="project-category text-faded">
-                    Category
-                  </div>
-                  <div class="project-name">
-                    Project Name
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div class="col-lg-4 col-sm-6">
-            <a class="portfolio-box" href="img/portfolio/fullsize/6.jpg">
-              <img class="img-fluid" src="img/portfolio/thumbnails/6.jpg" alt="">
-              <div class="portfolio-box-caption">
-                <div class="portfolio-box-caption-content">
-                  <div class="project-category text-faded">
-                    Category
-                  </div>
-                  <div class="project-name">
-                    Project Name
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="bg-dark text-white">
-      <div class="container text-center">
-        <h2 class="mb-4">Free Download at Start Bootstrap!</h2>
-        <a class="btn btn-light btn-xl sr-button" href="http://startbootstrap.com/template-overviews/creative/">Download Now!</a>
-      </div>
-    </section>
-
-    <section id="contact">
+    <section id="contact" class="bg-dark text-white">
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto text-center">
-            <h2 class="section-heading">Let's Get In Touch!</h2>
+            <h2 class="section-heading">DISCLAIMER</h2>
             <hr class="my-4">
-            <p class="mb-5">Ready to start your next project with us? That's great! Give us a call or send us an email and we will get back to you as soon as possible!</p>
+            <p class="mb-5">
+              This site will not track you or anything about your website. The website URLs entered here are converted to a semi-random string of characters, which is the only way to identify your website. No logs are kept of the IP addresses used to access this site or its functionality. In other words, anyone can use this site to download any website in its entirety.*
+            </p>
+            <p>
+              This site cannot be used to download backend code from sites that run their own backend.  Only what is publicly available can be cloned. Likewise, sites that use Wordpress, Squarespace, or another custom website builder will be able to save all of their current site documents, but will lose the functionality provided by those platforms. At this time, we cannot guarantee that downloads will include functional analytics code, forms, and ads. 
+            </p>
+            <p>
+              This website takes no responsibility for the functionality of your site after you download. There are too many ways to build a website and we can only cover what is publicly available. 
+            </p>
+            <p>
+              *The top 100,000 Alexa-ranked sites in the world are excluded from this site's service.
+            </p>
           </div>
         </div>
         <div class="row">
@@ -266,6 +162,39 @@
 
     <!-- Custom scripts for this template -->
     <script src="js/creative.min.js"></script>
+
+    <script>
+      var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+          sParameterName = sURLVariables[i].split('=');
+
+          if (sParameterName[0] === sParam) {
+              return sParameterName[1] === undefined ? true : sParameterName[1];
+          }
+        }
+      };
+
+      function getSite(site){
+        $.get( "ec2-54-210-30-49.compute-1.amazonaws.com:5000/getSite", function( data ) {
+          $("#result" ).html( data );
+          console.log( "Load was performed." );
+        });
+      }
+      $( document ).ready(function() {
+          console.log( "ready!" );
+          var site = getUrlParameter('site');
+          console.log(site);
+          if(site != undefined){
+            getSite(site);
+          }
+
+      });
+    </script>
 
   </body>
 

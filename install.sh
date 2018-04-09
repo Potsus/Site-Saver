@@ -78,13 +78,15 @@ if [[ $1 == "install" ]] ; then
 
 
 elif [[ $1 == "data" ]] ; then
+    echo "making sure mongo is started"
+    mongod --fork --logpath logs/mongo.log
     echo "loading blacklist"
     # do a thing
     python3 blacklist.py
 
 elif [[ $1 == "run" ]] ; then
     echo "Starting Mongo..."
-    mongod --fork --logfile logs/mongo.log
+    mongod --fork --logpath logs/mongo.log
 
     echo "Starting Redis..."
     redis-server --daemonize yes
@@ -97,7 +99,7 @@ elif [[ $1 == "run" ]] ; then
     nohup rq worker &> logs/worker.log &
 
     echo "Starting Nginx..."
-    nohup /usr/bin/nginx -c nginx.conf &> logs/nginx.log &
+    nohup /usr/bin/nginx -c nginx.conf &> logs/nginx.log 
 
 
 else

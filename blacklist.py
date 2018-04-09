@@ -26,10 +26,13 @@ hashFrame = DataFrame()
 blackFrame = DataFrame()
 hashFrame['site'] = topAlexa['url'].apply(hashUrl)
 blackFrame['site'] = custom['url'].apply(hashUrl)
-print(hashFrame)
-print(blackFrame)
+# print(hashFrame)
+# print(blackFrame)
 hashFrame = hashFrame.append(blackFrame, ignore_index=True)
-print(hashFrame)
+# print(hashFrame)
+
+del topAlexa
+del blackFrame
 
 print('dropping old blacklist')
 blacklist.drop()

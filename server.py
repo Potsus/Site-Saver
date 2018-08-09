@@ -7,7 +7,7 @@ from flask_cors import CORS
 from db import jsonify, findSite, findOrAddSite, isBlacklisted
 from downloader import runJob
 
-from config import MONGO_URL, MONGO_DB
+from config import MONGO_URL, MONGO_DB, MAX_RUNTIME
 
 app = Flask(__name__)
 app.config['MONGO_DBNAME'] = MONGO_DB
@@ -32,7 +32,7 @@ class checkSite(Resource):
         if args.get('site') != None:
             data = findSite(args['site'])
 
-        return jsonify({'data':data})
+        return jsonify(data)
 
 class requestSite(Resource):
     def get(self):
@@ -41,16 +41,19 @@ class requestSite(Resource):
         if args.get('site') != None:
             url = args['site']
             if isBlacklisted(url):
+                console.log('URL: %s is blacklisted and will not be processed')
                 data = {'error': 'URL is blacklisted, will not be processed'}
             else:
                 data = findOrAddSite(url)
-                result = q.enqueue(runJob, url)
-        return jsonify({'data': data})
+                if(data['job'] == None):
+                    result = q.enqueue(runJob, url, timeout=MAX_RUNTIME)
+                    
+        return jsonify(data)
 
 api.add_resource(checkSite, '/getSite')
 api.add_resource(requestSite, '/requestSite')
 
 if __name__ == '__main__':
-     app.run(host='0.0.0.0', port=5000)
+     app.run(host='0.0.0.0', port=80)
 
 

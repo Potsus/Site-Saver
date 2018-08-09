@@ -45,7 +45,8 @@ def runJob(url):
         site['s3url'] = dl
         site['error'] = False
         site['end'] = now()
-        site['time'] = site['start'] - site['end']
+        # site['time'] = site['start'] - site['end']
+        site['job'] = None
         updateSite(site)
     except Exception as e:
         site['copied'] = False
@@ -53,7 +54,8 @@ def runJob(url):
         site['error'] = True
         site['message'] = '%s: %s' % (e, e.__doc__)
         site['end'] = now()
-        site['time'] = site['end'] - site['start']
+        # site['time'] = site['end'] - site['start']
+        site['job'] = None
         updateSite(site)
     
     return site
